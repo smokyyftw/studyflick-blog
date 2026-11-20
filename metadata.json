@@ -1,6 +1,8 @@
 {
-  "name": "ThinkNext",
+  "name": "StudyFlick",
   "description": "Student AI Playbook — Modern editorial blog on AI tools and study workflows for college and computer science students.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

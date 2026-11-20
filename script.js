@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Top Announcement Bar Dismiss
+  const announcementBar = document.querySelector('[data-announcement-bar]');
+  const announcementDismiss = document.querySelector('[data-announcement-dismiss]');
+  if (announcementBar && announcementDismiss) {
+    announcementDismiss.addEventListener('click', () => {
+      announcementBar.classList.add('is-dismissed');
+    });
+  }
+
   // 1. Mobile Navigation Toggle
   const menuBtn = document.querySelector('[data-menu-toggle]');
   const mobileDrawer = document.querySelector('[data-mobile-drawer]');
