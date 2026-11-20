@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyFlick — AI Tools &amp; Study Workflows for Students</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-pill">
+        <a href="index.html" class="brand-mark">Study<em>Flick</em></a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link is-active" aria-current="page">Home</a>
+          <a href="best-ai-tools.html" class="nav-link">Best AI Tools</a>
+          <a href="summarize-pdfs.html" class="nav-link">Summarize PDFs</a>
+          <a href="debug-code-ai.html" class="nav-link">Debug Code</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#comparison" class="btn-pill btn-primary">Compare Tools</a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            data-menu-toggle
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="17" x2="20" y2="17"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-drawer" data-mobile-drawer aria-label="Mobile navigation">
+        <a href="index.html" class="nav-link is-active" aria-current="page">Home</a>
+        <a href="best-ai-tools.html" class="nav-link">Best AI Tools</a>
+        <a href="summarize-pdfs.html" class="nav-link">Summarize PDFs</a>
+        <a href="debug-code-ai.html" class="nav-link">Debug Code</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="hero-badge">Student AI Playbook</span>
+            <h1 class="hero-title">Study workflows that <em>adapt to you</em></h1>
+            <p class="hero-lead">
+              Practical guides, honest tool comparisons, and repeatable prompt templates built for college coursework, dense research PDFs, and late-night computer science labs.
+            </p>
+            <div class="hero-actions">
+              <a href="best-ai-tools.html" class="btn-pill btn-primary">Explore Best Tools</a>
+              <a href="#articles" class="btn-pill btn-secondary">Read the 3 Guides</a>
+            </div>
+            <p class="hero-meta-note">
+              3 field-tested guides · 8 evaluated student tools · Built for real coursework
+            </p>
+          </div>
+
+          <div class="media-frame is-hero">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
+              alt="College students collaborating over laptops and lecture notes at a wooden study table"
+              referrerpolicy="no-referrer"
+            />
+            <div class="media-fallback" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>StudyFlick Student Study Desk</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="highlights-heading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-kicker">Workflow Benchmarks</span>
+              <h2 id="highlights-heading" class="section-title">Why structured prompting beats <em>generic chat</em></h2>
+            </div>
+            <p class="section-desc">
+              Replacing open-ended copy-pasting with grounded PDF pipelines and diagnostic prompts keeps comprehension high and saves hours every week.
+            </p>
+          </div>
+
+          <div class="bento-grid">
+            <article class="bento-card bento-cyan">
+              <div class="bento-eyebrow">01 · Literature &amp; PDF Triage</div>
+              <div>
+                <p class="bento-stat">62% Faster</p>
+                <h3 class="bento-title">Pre-reading synthesis</h3>
+                <p class="bento-copy">
+                  Section-by-section paper extraction turns 40-page seminar PDFs into structured claim matrices before you begin deep annotation.
+                </p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-peach">
+              <div class="bento-eyebrow">02 · Core Academic Pillars</div>
+              <div>
+                <p class="bento-stat">3 Workflows</p>
+                <h3 class="bento-title">Research, notes, and code</h3>
+                <p class="bento-copy">
+                  Every guide isolates one concrete student bottleneck—finding cited sources, retaining lectures, and isolating software bugs.
+                </p>
+              </div>
+            </article>
+
+            <article class="bento-card bento-lavender">
+              <div class="bento-eyebrow">03 · Comprehension First</div>
+              <div>
+                <p class="bento-stat">100% Grounded</p>
+                <h3 class="bento-title">Zero blind copy-pasting</h3>
+                <p class="bento-copy">
+                  Built-in verification checklists and Socratic hint prompts help you learn underlying concepts without hallucinated citations.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="comparison" class="section section-divider" aria-labelledby="comparison-heading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-kicker">Interactive Matrix</span>
+              <h2 id="comparison-heading" class="section-title">Featured AI study tools <em>compared</em></h2>
+            </div>
+
+            <div class="filter-bar" role="group" aria-label="Filter tools by category">
+              <button type="button" class="filter-btn is-active" data-filter-category="all" aria-pressed="true">All Tools</button>
+              <button type="button" class="filter-btn" data-filter-category="research" aria-pressed="false">Research</button>
+              <button type="button" class="filter-btn" data-filter-category="notes" aria-pressed="false">Note-Taking</button>
+              <button type="button" class="filter-btn" data-filter-category="coding" aria-pressed="false">Coding</button>
+            </div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-scroll">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tool</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Strongest Student Use Case</th>
+                    <th scope="col">Student / Free Tier</th>
+                    <th scope="col">Citation &amp; Source Grounding</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-tool-row data-category="research">
+                    <td>
+                      <span class="tool-name">Perplexity Academic</span>
+                      <span class="tool-sub">Web &amp; paper search</span>
+                    </td>
+                    <td><span class="cat-swatch swatch-cyan">Research</span></td>
+                    <td>Rapid literature scoping with inline links to peer-reviewed PDFs</td>
+                    <td>Free tier + Pro student discount</td>
+                    <td>High — direct inline URL citations</td>
+                  </tr>
+                  <tr data-tool-row data-category="research">
+                    <td>
+                      <span class="tool-name">Elicit</span>
+                      <span class="tool-sub">Empirical paper extraction</span>
+                    </td>
+                    <td><span class="cat-swatch swatch-cyan">Research</span></td>
+                    <td>Building literature review tables across 10–25 PDFs simultaneously</td>
+                    <td>Free monthly credit allowance</td>
+                    <td>High — linked directly to Semantic Scholar</td>
+                  </tr>
+                  <tr data-tool-row data-category="notes">
+                    <td>
+                      <span class="tool-name">NotebookLM</span>
+                      <span class="tool-sub">Source-locked notebook</span>
+                    </td>
+                    <td><span class="cat-swatch swatch-peach">Note-Taking</span></td>
+                    <td>Querying lecture slides and syllabi with zero external web drift</td>
+                    <td>Free with Google account</td>
+                    <td>Very High — answers only from uploaded PDFs</td>
+                  </tr>
+                  <tr data-tool-row data-category="notes">
+                    <td>
+                      <span class="tool-name">Obsidian + Copilot</span>
+                      <span class="tool-sub">Local markdown vault</span>
+                    </td>
+                    <td><span class="cat-swatch swatch-peach">Note-Taking</span></td>
+                    <td>Connecting multi-semester class notes into a private knowledge graph</td>
+                    <td>Free core app (BYO API or local model)</td>
+                    <td>Full local control over markdown files</td>
+                  </tr>
+                  <tr data-tool-row data-category="coding">
+                    <td>
+                      <span class="tool-name">GitHub Copilot</span>
+                      <span class="tool-sub">IDE inline completion</span>
+                    </td>
+                    <td><span class="cat-swatch swatch-lavender">Coding</span></td>
+                    <td>Writing boilerplate tests and explaining unfamiliar library APIs</td>
+                    <td>Free via GitHub Student Developer Pack</td>
+                    <td>Repository-aware within open editor tabs</td>
+                  </tr>
+                  <tr data-tool-row data-category="coding">
+                    <td>
+                      <span class="tool-name">Claude 3.5 / 3.7 Sonnet</span>
+                      <span class="tool-sub">Long-context reasoning</span>
+                    </td>
+                    <td><span class="cat-swatch swatch-lavender">Coding</span></td>
+                    <td>Tracing multi-file stack traces and step-by-step algorithm walkthroughs</td>
+                    <td>Generous free tier with daily cap</td>
+                    <td>High when given explicit code &amp; error context</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="articles" class="section section-divider" aria-labelledby="articles-heading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-kicker">Editorial Guides</span>
+              <h2 id="articles-heading" class="section-title">Deep-dive workflows for <em>this semester</em></h2>
+            </div>
+            <p class="section-desc">
+              Three complete playbooks covering tool selection, research paper synthesis, and disciplined code debugging.
+            </p>
+          </div>
+
+          <div class="posts-grid">
+            <article class="post-card">
+              <div class="media-frame is-card">
+                <img
+                  src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1000&q=80"
+                  alt="Open textbook, handwritten study notebook, and pen on a sunlit wooden desk"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="media-fallback" aria-hidden="true">
+                  <span>Best AI Tools Guide</span>
+                </div>
+              </div>
+              <div class="post-card-accent accent-cyan" aria-hidden="true"></div>
+              <div class="post-card-body">
+                <div class="post-meta">Tools &amp; Strategy · 6 min read</div>
+                <h3 class="post-card-title">Best AI Tools for College &amp; CS Students</h3>
+                <p class="post-card-excerpt">
+                  A structured breakdown across academic research, lecture note-taking, and computer science labs—plus how to combine free student tiers without subscription fatigue.
+                </p>
+                <a href="best-ai-tools.html" class="post-card-link">Read full guide &rarr;</a>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <div class="media-frame is-card">
+                <img
+                  src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80"
+                  alt="Student annotating printed research articles and organizing study notes"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="media-fallback" aria-hidden="true">
+                  <span>PDF Summarization Tutorial</span>
+                </div>
+              </div>
+              <div class="post-card-accent accent-peach" aria-hidden="true"></div>
+              <div class="post-card-body">
+                <div class="post-meta">Reading Workflow · 7 min read</div>
+                <h3 class="post-card-title">How to Use AI to Summarize Lecture PDFs and Research Papers</h3>
+                <p class="post-card-excerpt">
+                  A five-step pipeline with copyable prompt templates for extracting methodology, turning slides into active-recall quizzes, and auditing citations.
+                </p>
+                <a href="summarize-pdfs.html" class="post-card-link">Read full tutorial &rarr;</a>
+              </div>
+            </article>
+
+            <article class="post-card">
+              <div class="media-frame is-card">
+                <img
+                  src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80"
+                  alt="Clean source code syntax displayed on a dark developer monitor"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="media-fallback" aria-hidden="true">
+                  <span>Code Debugging Guide</span>
+                </div>
+              </div>
+              <div class="post-card-accent accent-lavender" aria-hidden="true"></div>
+              <div class="post-card-body">
+                <div class="post-meta">CS Labs · 7 min read</div>
+                <h3 class="post-card-title">A Student's Guide to Writing and Debugging Code with AI Prompts</h3>
+                <p class="post-card-excerpt">
+                  Stop pasting raw stack traces. Learn the four-part debugging prompt structure, Socratic hint patterns, and a verification checklist before submitting assignments.
+                </p>
+                <a href="debug-code-ai.html" class="post-card-link">Read full guide &rarr;</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="footer-brand">Study<em>Flick</em></a>
+            <p class="footer-tagline">
+              Independent editorial guides on AI tools, reading synthesis, and programming workflows designed for college and computer science students.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Guides</h2>
+            <ul class="footer-list">
+              <li><a href="index.html">Home Playbook</a></li>
+              <li><a href="best-ai-tools.html">Best AI Tools</a></li>
+              <li><a href="summarize-pdfs.html">Summarize Lecture PDFs</a></li>
+              <li><a href="debug-code-ai.html">Debug Code with AI</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Quick Sections</h2>
+            <ul class="footer-list">
+              <li><a href="index.html#comparison">Tool Comparison Table</a></li>
+              <li><a href="best-ai-tools.html#cs-tools">CS &amp; Coding Stack</a></li>
+              <li><a href="summarize-pdfs.html#templates">PDF Prompt Templates</a></li>
+              <li><a href="debug-code-ai.html#checklist">Debugging Checklist</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Weekly Study Digest</h2>
+            <p class="footer-tagline">
+              One practical prompt workflow and tool teardown every Sunday during the semester.
+            </p>
+            <form class="footer-form" data-digest-form novalidate>
+              <input
+                type="email"
+                class="footer-input"
+                placeholder="you@university.edu"
+                aria-label="Email address for weekly study digest"
+                required
+              />
+              <button type="submit" class="footer-submit">Join</button>
+            </form>
+            <p class="footer-feedback" data-digest-feedback aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 StudyFlick Editorial. Static HTML5, CSS3 &amp; Vanilla JS.</span>
+          <span>Built for GitHub Pages · Student AI Playbook</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

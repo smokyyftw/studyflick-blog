@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Student's Guide to Writing and Debugging Code with AI Prompts — StudyFlick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="nav-pill">
+        <a href="index.html" class="brand-mark">Study<em>Flick</em></a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="best-ai-tools.html" class="nav-link">Best AI Tools</a>
+          <a href="summarize-pdfs.html" class="nav-link">Summarize PDFs</a>
+          <a href="debug-code-ai.html" class="nav-link is-active" aria-current="page">Debug Code</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="index.html#comparison" class="btn-pill btn-primary">Compare Tools</a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            data-menu-toggle
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="17" x2="20" y2="17"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-drawer" data-mobile-drawer aria-label="Mobile navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="best-ai-tools.html" class="nav-link">Best AI Tools</a>
+        <a href="summarize-pdfs.html" class="nav-link">Summarize PDFs</a>
+        <a href="debug-code-ai.html" class="nav-link is-active" aria-current="page">Debug Code</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <article class="article-container">
+        <header class="article-page-header">
+          <a href="index.html" class="back-link">&larr; Back to Student AI Playbook</a>
+          <h1 class="article-title">A Student's Guide to Writing and <em>Debugging Code</em> with AI Prompts</h1>
+          <p class="article-subtitle">
+            Pasting a 60-line traceback with "fix this" teaches you nothing and often introduces subtle regressions. Here is how to structure debugging prompts that pinpoint root causes while keeping your fundamentals sharp.
+          </p>
+          <div class="article-byline">
+            <span>Computer Science Labs</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>7 min read</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>Prompts &amp; Verification Checklist</span>
+          </div>
+
+          <div class="media-frame is-article-hero">
+            <img
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80"
+              alt="Clean programming code displayed on a dark monitor in a software lab"
+              referrerpolicy="no-referrer"
+            />
+            <div class="media-fallback" aria-hidden="true">
+              <span>AI Code &amp; Debugging Guide</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="article-prose">
+          <p>
+            Every computer science student hits the same midnight wall: a pointer arithmetic bug in C, an off-by-one boundary condition in a graph traversal, or an asynchronous React state race that refuses to reproduce consistently. When an assignment deadline is six hours away, pasting the entire source file into an AI chat and copying whatever compiles is tempting—and almost always counterproductive.
+          </p>
+          <p>
+            Unconstrained code generation often rewrites working helper functions, invents deprecated API flags, or masks the real bug with a try-catch block. Worse, when your midterm asks you to trace the exact same algorithm by hand, borrowed solutions fall apart. High-performing CS students use AI the way senior engineers use a rubber duck paired with a sharp TA: by isolating minimal context, stating their own hypothesis first, and demanding tests rather than blind rewrites.
+          </p>
+
+          <h2>The Four-Part Debugging Prompt Formula</h2>
+          <p>
+            Whenever your code fails a test case or throws an unexpected compiler error, structure your prompt around four concrete elements before pressing Enter:
+          </p>
+          <ul>
+            <li><strong>Environment &amp; Constraints:</strong> Specify language version, compiler flags, or disallowed libraries (for example, <code>C11 with -Wall -Wextra</code>, or <code>Python 3.12 without NumPy</code>).</li>
+            <li><strong>Expected vs. Actual Behavior:</strong> Show the exact failing input, what your function should return, and the exact terminal output or stack trace.</li>
+            <li><strong>Minimal Reproducible Snippet:</strong> Trim unrelated boilerplate and paste only the 15–40 lines surrounding the failure.</li>
+            <li><strong>Your Current Hypothesis:</strong> Write one sentence explaining what you already checked and why you think it is failing.</li>
+          </ul>
+
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <span class="prompt-label">Prompt · Root-Cause Debugging (No Blind Rewrites)</span>
+              <button type="button" class="copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+            <pre class="prompt-pre">Language/Environment: Python 3.12 (standard library only, no third-party packages).
+Goal: Return the shortest path length in an unweighted graph using BFS.
+
+Expected output for input edges [(0,1), (1,2), (0,2)] from 0 to 2: 1
+Actual output: 2
+
+Minimal code:
+[Paste only the bfs() function here]
+
+My hypothesis: I think I am marking nodes visited after popping instead of when enqueuing, or overwriting the distance dictionary.
+
+Do NOT rewrite the whole function yet. First, trace my code line by line on the failing input and show the exact state of the queue at each step.</pre>
+          </div>
+
+          <h2>Socratic Prompting for Course Assignments</h2>
+          <p>
+            Many university honor codes permit conceptual hints and syntax explanations while forbidding generated assignment solutions. A Socratic prompt explicitly instructs the model to withhold finished code and guide you toward discovering the flaw yourself. This mirrors office hours and builds the diagnostic intuition you need for technical interviews.
+          </p>
+
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <span class="prompt-label">Prompt · Socratic TA Mode for CS Homework</span>
+              <button type="button" class="copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+            <pre class="prompt-pre">Act as a computer science teaching assistant. I am working on a binary search tree deletion method in Java.
+Rules:
+1. Do NOT write replacement code or give me the full solution.
+2. Identify the logical edge case my current code misses (for example, deleting a node with two children).
+3. Ask me 2 guiding questions that help me figure out how to update the parent pointer safely.</pre>
+          </div>
+
+          <h2>Generating Edge-Case Tests Before Submission</h2>
+          <p>
+            Autograders rarely fail students on the happy path; they fail on empty arrays, single-element lists, duplicate keys, negative integers, and integer overflow. Once your implementation passes sample tests, ask your AI assistant to act as an adversarial QA engineer and propose edge cases you have not tested yet.
+          </p>
+
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <span class="prompt-label">Prompt · Adversarial Unit Test Generator</span>
+              <button type="button" class="copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+            <pre class="prompt-pre">Here is the specification for my assignment function: [paste prompt/spec].
+Here is my function signature: def parse_intervals(raw: list[str]) -> list[tuple[int, int]]
+
+Write 8 concise pytest unit tests covering boundary and malformed inputs (empty input, overlapping intervals, unsorted ranges, single-point intervals, negative bounds). Explain briefly what bug each test catches.</pre>
+          </div>
+
+          <section id="checklist" class="checklist-card" data-checklist aria-labelledby="checklist-heading">
+            <div class="checklist-top">
+              <h2 id="checklist-heading" class="checklist-title">Pre-Submission Debugging Checklist</h2>
+              <div class="checklist-status">
+                <span data-checklist-count>0 of 6 verified</span>
+                <button type="button" class="checklist-reset" data-checklist-reset>Reset</button>
+              </div>
+            </div>
+
+            <ul class="checklist-items">
+              <li class="checklist-item">
+                <input type="checkbox" id="chk-1" />
+                <label for="chk-1">I reproduced the failure with a minimal input before asking an AI model for help.</label>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox" id="chk-2" />
+                <label for="chk-2">I read every line of the suggested fix and can explain why the previous version failed.</label>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox" id="chk-3" />
+                <label for="chk-3">I verified all library methods and compiler flags actually exist in my local environment.</label>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox" id="chk-4" />
+                <label for="chk-4">I tested boundary inputs: empty collections, size-1 inputs, duplicates, and null/zero cases.</label>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox" id="chk-5" />
+                <label for="chk-5">I ran the full compiler warning flags (such as <code>-Wall -Wextra</code> or strict TypeScript) with zero warnings.</label>
+              </li>
+              <li class="checklist-item">
+                <input type="checkbox" id="chk-6" />
+                <label for="chk-6">My usage complies with my course syllabus and academic integrity policy.</label>
+              </li>
+            </ul>
+          </section>
+
+          <aside class="editorial-callout is-lavender">
+            <h3 class="editorial-callout-title">Never Skip the Diff Review</h3>
+            <p>
+              Whether you use GitHub Copilot inside VS Code or a web chat window, always inspect <code>git diff</code> before committing. Catching a silently deleted edge-case guard takes ten seconds in a diff view and saves hours of confusion before the lab deadline.
+            </p>
+          </aside>
+        </div>
+      </article>
+
+      <section class="related-section" aria-label="Continue reading">
+        <span class="section-kicker">Continue Reading</span>
+        <h2 class="section-title">More from <em>StudyFlick</em></h2>
+        <div class="related-grid">
+          <article class="post-card">
+            <div class="post-card-accent accent-cyan" aria-hidden="true"></div>
+            <div class="post-card-body">
+              <div class="post-meta">Tools &amp; Strategy · 6 min read</div>
+              <h3 class="post-card-title">Best AI Tools for College &amp; CS Students</h3>
+              <p class="post-card-excerpt">
+                Build a lean three-tool semester stack across literature search, course notes, and IDE assistance.
+              </p>
+              <a href="best-ai-tools.html" class="post-card-link">Read guide &rarr;</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card-accent accent-peach" aria-hidden="true"></div>
+            <div class="post-card-body">
+              <div class="post-meta">Reading Workflow · 7 min read</div>
+              <h3 class="post-card-title">How to Use AI to Summarize Lecture PDFs and Research Papers</h3>
+              <p class="post-card-excerpt">
+                Follow our five-step paper synthesis pipeline with copyable prompt templates for active recall.
+              </p>
+              <a href="summarize-pdfs.html" class="post-card-link">Read tutorial &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="footer-brand">Study<em>Flick</em></a>
+            <p class="footer-tagline">
+              Independent editorial guides on AI tools, reading synthesis, and programming workflows designed for college and computer science students.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Guides</h2>
+            <ul class="footer-list">
+              <li><a href="index.html">Home Playbook</a></li>
+              <li><a href="best-ai-tools.html">Best AI Tools</a></li>
+              <li><a href="summarize-pdfs.html">Summarize Lecture PDFs</a></li>
+              <li><a href="debug-code-ai.html">Debug Code with AI</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Quick Sections</h2>
+            <ul class="footer-list">
+              <li><a href="index.html#comparison">Tool Comparison Table</a></li>
+              <li><a href="best-ai-tools.html#cs-tools">CS &amp; Coding Stack</a></li>
+              <li><a href="summarize-pdfs.html#templates">PDF Prompt Templates</a></li>
+              <li><a href="debug-code-ai.html#checklist">Debugging Checklist</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Weekly Study Digest</h2>
+            <p class="footer-tagline">
+              One practical prompt workflow and tool teardown every Sunday during the semester.
+            </p>
+            <form class="footer-form" data-digest-form novalidate>
+              <input
+                type="email"
+                class="footer-input"
+                placeholder="you@university.edu"
+                aria-label="Email address for weekly study digest"
+                required
+              />
+              <button type="submit" class="footer-submit">Join</button>
+            </form>
+            <p class="footer-feedback" data-digest-feedback aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 StudyFlick Editorial. Static HTML5, CSS3 &amp; Vanilla JS.</span>
+          <span>Built for GitHub Pages · Student AI Playbook</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

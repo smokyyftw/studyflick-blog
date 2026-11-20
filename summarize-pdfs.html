@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Use AI to Summarize Lecture PDFs and Research Papers — StudyFlick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="nav-pill">
+        <a href="index.html" class="brand-mark">Study<em>Flick</em></a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="best-ai-tools.html" class="nav-link">Best AI Tools</a>
+          <a href="summarize-pdfs.html" class="nav-link is-active" aria-current="page">Summarize PDFs</a>
+          <a href="debug-code-ai.html" class="nav-link">Debug Code</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="index.html#comparison" class="btn-pill btn-primary">Compare Tools</a>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            data-menu-toggle
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="4" y1="7" x2="20" y2="7"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="17" x2="20" y2="17"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-drawer" data-mobile-drawer aria-label="Mobile navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="best-ai-tools.html" class="nav-link">Best AI Tools</a>
+        <a href="summarize-pdfs.html" class="nav-link is-active" aria-current="page">Summarize PDFs</a>
+        <a href="debug-code-ai.html" class="nav-link">Debug Code</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <article class="article-container">
+        <header class="article-page-header">
+          <a href="index.html" class="back-link">&larr; Back to Student AI Playbook</a>
+          <h1 class="article-title">How to Use AI to Summarize Lecture PDFs and <em>Research Papers</em></h1>
+          <p class="article-subtitle">
+            Asking an AI assistant to "summarize this PDF" produces vague paragraphs that skip equations, experimental caveats, and subtle definitions tested on exams. Follow this five-step extraction workflow instead.
+          </p>
+          <div class="article-byline">
+            <span>Reading Workflow</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>7 min read</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>Includes 3 Prompt Templates</span>
+          </div>
+
+          <div class="media-frame is-article-hero">
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80"
+              alt="Student highlighting research articles and writing structured study notes"
+              referrerpolicy="no-referrer"
+            />
+            <div class="media-fallback" aria-hidden="true">
+              <span>PDF &amp; Paper Synthesis Workflow</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="article-prose">
+          <p>
+            During a heavy week with three 35-page seminar papers and a 90-slide systems lecture deck, it is tempting to upload every file and ask for a five-bullet summary. The problem is that compression without structure erases exactly what professors care about: assumptions behind a proof, baseline comparisons in an ablation table, and edge cases mentioned only in slide speaker notes.
+          </p>
+          <p>
+            Instead of treating AI as a replacement for reading, treat it as a reading scaffold. A disciplined workflow maps the paper's architecture first, extracts evidence section by section, and converts dense definitions into active-recall questions you can test yourself against before lecture.
+          </p>
+
+          <h2>The 5-Step PDF &amp; Paper Pipeline</h2>
+          <div class="workflow-steps">
+            <section class="step-card">
+              <div class="step-num cyan">01</div>
+              <div class="step-body">
+                <h3>Pre-Flight Structural Skim</h3>
+                <p>
+                  Read the abstract, section headings, and final conclusion yourself in three minutes. Then ask the model to build a section-by-section outline listing the core question each section answers—never start with a single paragraph summary.
+                </p>
+              </div>
+            </section>
+
+            <section class="step-card">
+              <div class="step-num peach">02</div>
+              <div class="step-body">
+                <h3>Chunk Long Readings by Section</h3>
+                <p>
+                  When a PDF exceeds 20 pages, avoid dumping the entire document into one prompt. Feed the Introduction + Related Work separately from Methods and Results so the model preserves equations, dataset sizes, and failure cases.
+                </p>
+              </div>
+            </section>
+
+            <section class="step-card">
+              <div class="step-num lavender">03</div>
+              <div class="step-body">
+                <h3>Extract Claims, Methods &amp; Limitations</h3>
+                <p>
+                  Force the assistant to separate what the authors actually measured from what they hypothesize. Ask explicitly for assumptions, baselines used, and stated limitations—those are prime seminar discussion questions.
+                </p>
+              </div>
+            </section>
+
+            <section class="step-card">
+              <div class="step-num yellow">04</div>
+              <div class="step-body">
+                <h3>Convert Slides into Active-Recall Drills</h3>
+                <p>
+                  Lecture PDFs are often sparse bullet lists that give you false fluency when re-read passively. Prompt the AI to turn slide definitions and diagrams into short conceptual questions with hidden answers.
+                </p>
+              </div>
+            </section>
+
+            <section class="step-card">
+              <div class="step-num cyan">05</div>
+              <div class="step-body">
+                <h3>Verify Numbers &amp; Quotes Against the Source</h3>
+                <p>
+                  Always request page numbers or slide indices alongside every extracted claim, then spot-check key formulas and metrics directly in your PDF viewer before copying anything into your final study sheet.
+                </p>
+              </div>
+            </section>
+          </div>
+
+          <h2 id="templates">Copyable Prompt Templates</h2>
+          <p>
+            Use the templates below inside NotebookLM, Claude, or ChatGPT with file upload enabled. Each prompt constrains the output format so the response remains concise, verifiable, and directly useful during exam week.
+          </p>
+
+          <h3>Template 1: Research Paper Architecture Map</h3>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <span class="prompt-label">Prompt · Structural Skim &amp; Claim Matrix</span>
+              <button type="button" class="copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+            <pre class="prompt-pre">You are my research reading assistant. Using ONLY the attached PDF, create a structured reading guide with:
+1. Core Research Question (1-2 sentences).
+2. Methodology &amp; Dataset / Experimental Setup (bulleted, include sample sizes and baselines).
+3. Key Quantitative Findings (cite the exact Table, Figure, or Page number for each metric).
+4. Stated Limitations &amp; Threats to Validity.
+5. Three high-value seminar questions a professor might ask about this paper.
+
+If a detail is not explicitly stated in the PDF, write "Not specified in text" instead of guessing.</pre>
+          </div>
+
+          <h3>Template 2: Lecture Slide Deck to Study Guide</h3>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <span class="prompt-label">Prompt · Slide Synthesis &amp; Glossary</span>
+              <button type="button" class="copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+            <pre class="prompt-pre">Analyze the attached lecture slide PDF. Reorganize the material into a clean study outline:
+- Group related slides by core topic and note the slide range (e.g., Slides 4-11).
+- Define every technical term introduced, using plain language plus the exact formal definition from the slides.
+- Highlight any trade-offs, complexity bounds, or comparisons (e.g., Method A vs. Method B) in a Markdown table.
+- List any steps or formulas that appear incomplete on the slides so I know what to review from lecture recordings.</pre>
+          </div>
+
+          <h3>Template 3: Active-Recall Exam Question Generator</h3>
+          <div class="prompt-block">
+            <div class="prompt-header">
+              <span class="prompt-label">Prompt · Conceptual Self-Testing</span>
+              <button type="button" class="copy-btn" data-copy-prompt>Copy Prompt</button>
+            </div>
+            <pre class="prompt-pre">Based strictly on the attached reading, write 6 practice questions to test deep understanding rather than memorization:
+- 2 "Why does this design choice matter?" conceptual questions
+- 2 "What breaks if assumption X is violated?" edge-case questions
+- 2 short compare-and-contrast questions
+
+Present all 6 questions first without answers. Wait for my typed responses, then grade each answer against the PDF with specific page references.</pre>
+          </div>
+
+          <aside class="editorial-callout is-peach">
+            <h3 class="editorial-callout-title">Handling Equations, Charts &amp; Scanned PDFs</h3>
+            <p>
+              Standard text extractors often scramble two-column layouts and mathematical notation. Whenever a crucial theorem or plot looks garbled in text, take a clean screenshot of that single figure or proof and paste the image directly into a multimodal prompt rather than trusting OCR text alone.
+            </p>
+          </aside>
+        </div>
+      </article>
+
+      <section class="related-section" aria-label="Continue reading">
+        <span class="section-kicker">Continue Reading</span>
+        <h2 class="section-title">Explore the rest of <em>StudyFlick</em></h2>
+        <div class="related-grid">
+          <article class="post-card">
+            <div class="post-card-accent accent-cyan" aria-hidden="true"></div>
+            <div class="post-card-body">
+              <div class="post-meta">Tools &amp; Strategy · 6 min read</div>
+              <h3 class="post-card-title">Best AI Tools for College &amp; CS Students</h3>
+              <p class="post-card-excerpt">
+                Compare research, note-taking, and coding tools with student discounts and zero-fluff evaluation criteria.
+              </p>
+              <a href="best-ai-tools.html" class="post-card-link">Read guide &rarr;</a>
+            </div>
+          </article>
+
+          <article class="post-card">
+            <div class="post-card-accent accent-lavender" aria-hidden="true"></div>
+            <div class="post-card-body">
+              <div class="post-meta">CS Labs · 7 min read</div>
+              <h3 class="post-card-title">A Student's Guide to Writing and Debugging Code with AI Prompts</h3>
+              <p class="post-card-excerpt">
+                Pair minimal reproducible examples with Socratic prompts and an interactive debugging checklist.
+              </p>
+              <a href="debug-code-ai.html" class="post-card-link">Read guide &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="footer-brand">Study<em>Flick</em></a>
+            <p class="footer-tagline">
+              Independent editorial guides on AI tools, reading synthesis, and programming workflows designed for college and computer science students.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Guides</h2>
+            <ul class="footer-list">
+              <li><a href="index.html">Home Playbook</a></li>
+              <li><a href="best-ai-tools.html">Best AI Tools</a></li>
+              <li><a href="summarize-pdfs.html">Summarize Lecture PDFs</a></li>
+              <li><a href="debug-code-ai.html">Debug Code with AI</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Quick Sections</h2>
+            <ul class="footer-list">
+              <li><a href="index.html#comparison">Tool Comparison Table</a></li>
+              <li><a href="best-ai-tools.html#cs-tools">CS &amp; Coding Stack</a></li>
+              <li><a href="summarize-pdfs.html#templates">PDF Prompt Templates</a></li>
+              <li><a href="debug-code-ai.html#checklist">Debugging Checklist</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="footer-heading">Weekly Study Digest</h2>
+            <p class="footer-tagline">
+              One practical prompt workflow and tool teardown every Sunday during the semester.
+            </p>
+            <form class="footer-form" data-digest-form novalidate>
+              <input
+                type="email"
+                class="footer-input"
+                placeholder="you@university.edu"
+                aria-label="Email address for weekly study digest"
+                required
+              />
+              <button type="submit" class="footer-submit">Join</button>
+            </form>
+            <p class="footer-feedback" data-digest-feedback aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 StudyFlick Editorial. Static HTML5, CSS3 &amp; Vanilla JS.</span>
+          <span>Built for GitHub Pages · Student AI Playbook</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
