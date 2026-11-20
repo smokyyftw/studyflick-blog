@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (copied) {
-        btn.textContent = 'Copied';
+        btn.textContent = 'Copied \u2713';
         btn.classList.add('is-copied');
       } else {
         btn.textContent = 'Select text';
@@ -181,10 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const email = input.value.trim();
       if (!email || !email.includes('@')) {
+        feedback.classList.add('is-error');
         feedback.textContent = 'Please enter a valid student or personal email address.';
         return;
       }
 
+      feedback.classList.remove('is-error');
       feedback.textContent = `Subscribed ${email} to the weekly StudyFlick study digest.`;
       input.value = '';
     });

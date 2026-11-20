@@ -410,8 +410,16 @@ button {
 }
 
 .media-frame.is-article-hero {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
   margin: 28px 0 36px;
+}
+
+#comparison,
+#articles,
+#cs-tools,
+#templates,
+#checklist {
+  scroll-margin-top: 100px;
 }
 
 .media-frame img {
@@ -570,25 +578,29 @@ button {
 }
 
 .filter-btn {
-  padding: 8px 16px;
-  border: none;
+  padding: 8px 18px;
+  min-height: 36px;
+  border: 1px solid transparent;
   border-radius: var(--radius-pill);
   background: transparent;
   color: var(--text-muted);
   font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
-  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out);
+  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out);
 }
 
 .filter-btn:hover {
   color: var(--text-ink);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-.filter-btn.is-active {
-  background-color: var(--bg-surface);
-  color: var(--text-ink);
-  box-shadow: 0 1px 4px rgba(26, 26, 26, 0.08);
+.filter-btn.is-active,
+.filter-btn[aria-pressed="true"] {
+  background-color: var(--text-ink);
+  color: var(--bg-paper);
+  border-color: var(--text-ink);
+  box-shadow: 0 2px 6px rgba(26, 26, 26, 0.14);
 }
 
 .table-card {
@@ -1207,11 +1219,21 @@ table.comparison-table tbody tr.is-hidden {
   background-color: #FCE265;
 }
 
+.footer-input:focus-visible,
+.footer-submit:focus-visible {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 2px;
+}
+
 .footer-feedback {
   margin: 10px 0 0;
   font-size: 0.82rem;
   color: var(--accent-cyan);
   min-height: 1.2em;
+}
+
+.footer-feedback.is-error {
+  color: var(--accent-peach);
 }
 
 .footer-bottom {
