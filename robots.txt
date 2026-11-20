@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sohaib007w.github.io/studyflick-blog/sitemap.xml
