@@ -13,7 +13,7 @@ export default defineConfig(() => {
             return;
           }
           const distDir = path.resolve(__dirname, 'dist');
-          for (const file of ['styles.css', 'script.js', 'robots.txt', 'sitemap.xml']) {
+          for (const file of ['styles.css', 'script.js', 'robots.txt', 'sitemap.xml', 'llms.txt']) {
             const srcFile = path.resolve(__dirname, file);
             const destFile = path.resolve(distDir, file);
             if (fs.existsSync(distDir) && fs.existsSync(srcFile)) {

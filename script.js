@@ -34,41 +34,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Reading Progress Bar (Article Pages)
+  // 2. Reading Progress Bar (rAF-throttled + GPU scaleX to avoid layout reflows)
   const progressBar = document.querySelector('[data-reading-progress]');
   if (progressBar) {
-    const updateProgress = () => {
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? Math.min(100, Math.max(0, (window.scrollY / docHeight) * 100)) : 0;
-      progressBar.style.width = pct + '%';
+    let maxScroll = 0;
+    let scrollTicking = false;
+    let measureTicking = false;
+
+    const renderProgress = () => {
+      scrollTicking = false;
+      const ratio = maxScroll > 0 ? Math.min(1, Math.max(0, window.scrollY / maxScroll)) : 0;
+      progressBar.style.transform = `scaleX(${ratio.toFixed(4)})`;
     };
-    window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
+
+    const measureAndRender = () => {
+      measureTicking = false;
+      maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      renderProgress();
+    };
+
+    const scheduleMeasure = () => {
+      if (!measureTicking) {
+        measureTicking = true;
+        window.requestAnimationFrame(measureAndRender);
+      }
+    };
+
+    const scheduleScroll = () => {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        window.requestAnimationFrame(renderProgress);
+      }
+    };
+
+    window.addEventListener('scroll', scheduleScroll, { passive: true });
+    window.addEventListener('resize', scheduleMeasure, { passive: true });
+    window.addEventListener('load', scheduleMeasure, { once: true });
+
+    if (typeof ResizeObserver === 'function') {
+      const resizeObserver = new ResizeObserver(scheduleMeasure);
+      resizeObserver.observe(document.documentElement);
+    }
+
+    scheduleMeasure();
   }
 
   // 3. Homepage Comparison Table Category Filter
-  const filterButtons = document.querySelectorAll('[data-filter-category]');
-  const tableRows = document.querySelectorAll('[data-tool-row]');
+  const filterButtons = Array.from(document.querySelectorAll('[data-filter-category]'));
+  const tableRows = Array.from(document.querySelectorAll('[data-tool-row]'));
 
   if (filterButtons.length > 0 && tableRows.length > 0) {
+    const rowCategories = tableRows.map((row) => row.getAttribute('data-category'));
+
     filterButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         const selected = btn.getAttribute('data-filter-category');
 
         filterButtons.forEach((b) => {
-          b.classList.remove('is-active');
-          b.setAttribute('aria-pressed', 'false');
+          const isSelected = b === btn;
+          b.classList.toggle('is-active', isSelected);
+          b.setAttribute('aria-pressed', String(isSelected));
         });
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-pressed', 'true');
 
-        tableRows.forEach((row) => {
-          const rowCategory = row.getAttribute('data-category');
-          if (selected === 'all' || rowCategory === selected) {
-            row.classList.remove('is-hidden');
-          } else {
-            row.classList.add('is-hidden');
-          }
+        tableRows.forEach((row, index) => {
+          const shouldShow = selected === 'all' || rowCategories[index] === selected;
+          row.classList.toggle('is-hidden', !shouldShow);
         });
       });
     });
@@ -102,8 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const textarea = document.createElement('textarea');
           textarea.value = textToCopy;
           textarea.setAttribute('readonly', '');
-          textarea.style.position = 'fixed';
-          textarea.style.opacity = '0';
+          textarea.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
           document.body.appendChild(textarea);
           textarea.select();
           copied = document.execCommand('copy');
@@ -134,21 +163,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. Interactive Debugging Checklist (debug-code-ai.html)
   const checklistContainer = document.querySelector('[data-checklist]');
   if (checklistContainer) {
-    const checkboxes = checklistContainer.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = Array.from(checklistContainer.querySelectorAll('input[type="checkbox"]'));
+    const items = checkboxes.map((box) => box.closest('.checklist-item'));
     const countLabel = checklistContainer.querySelector('[data-checklist-count]');
     const resetBtn = checklistContainer.querySelector('[data-checklist-reset]');
 
     const updateChecklist = () => {
+      const states = checkboxes.map((box) => box.checked);
       let checkedCount = 0;
-      checkboxes.forEach((box) => {
-        const item = box.closest('.checklist-item');
-        if (box.checked) {
-          checkedCount += 1;
-          if (item) item.classList.add('is-checked');
-        } else {
-          if (item) item.classList.remove('is-checked');
+
+      states.forEach((isChecked, index) => {
+        if (isChecked) checkedCount += 1;
+        if (items[index]) {
+          items[index].classList.toggle('is-checked', isChecked);
         }
       });
+
       if (countLabel) {
         countLabel.textContent = `${checkedCount} of ${checkboxes.length} verified`;
       }
@@ -182,29 +212,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = input.value.trim();
       if (!email || !email.includes('@')) {
         feedback.classList.add('is-error');
-        feedback.textContent = 'Please enter a valid student or personal email address.';
+        feedback.textContent = 'Please enter a valid university or personal email address.';
         return;
       }
 
       feedback.classList.remove('is-error');
-      feedback.textContent = `Subscribed ${email} to the weekly StudyFlick study digest.`;
+      feedback.textContent = `Subscribed ${email} to the weekly StudyFlick digest.`;
       input.value = '';
     });
   });
 
-  // 7. Graceful Image Fallback Handler
-  document.querySelectorAll('.media-frame img').forEach((img) => {
+  // 7. Graceful Image Fallback Handler (batched read pass before DOM write pass)
+  const mediaImages = Array.from(document.querySelectorAll('.media-frame img'));
+  const brokenFrames = [];
+
+  mediaImages.forEach((img) => {
+    if (img.complete && img.naturalWidth === 0) {
+      const frame = img.closest('.media-frame');
+      if (frame) brokenFrames.push(frame);
+    }
+
     img.addEventListener('error', () => {
       const frame = img.closest('.media-frame');
       if (frame) {
         frame.classList.add('has-fallback');
       }
     });
-    if (img.complete && img.naturalWidth === 0) {
-      const frame = img.closest('.media-frame');
-      if (frame) {
-        frame.classList.add('has-fallback');
-      }
-    }
   });
+
+  if (brokenFrames.length > 0) {
+    brokenFrames.forEach((frame) => {
+      frame.classList.add('has-fallback');
+    });
+  }
 });

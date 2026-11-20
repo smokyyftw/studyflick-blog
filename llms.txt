@@ -1,0 +1,19 @@
+# StudyFlick
+
+> Practical guides, workflow benchmarks, and copyable prompt templates for college and computer science learners building reliable academic habits.
+
+StudyFlick is an independent editorial publication maintained by Muhammad Sohaib (BSc Computer Science Student). Every guide focuses on grounded research, source-locked lecture synthesis, and disciplined software debugging without hype or paid placements.
+
+## Site URLs
+
+- [Home Playbook](https://sohaib007w.github.io/studyflick-blog/index.html): Overview of structured academic workflows, interactive app comparison matrix, editorial policy, and privacy statement.
+- [Best AI Tools for College & CS Students](https://sohaib007w.github.io/studyflick-blog/best-ai-tools.html): Category breakdown across academic research, source-grounded notebooks, and coding assistants, including free university tiers.
+- [How to Summarize Lecture PDFs & Research Papers](https://sohaib007w.github.io/studyflick-blog/summarize-pdfs.html): Five-step reading pipeline with three copyable prompt templates for claim matrices, slide glossaries, and active-recall self-testing.
+- [How to Write & Debug Code with AI Prompts](https://sohaib007w.github.io/studyflick-blog/debug-code-ai.html): Four-part bug report structure, Socratic teaching-assistant prompts, edge-case test generation, and a six-point verification checklist.
+
+## Author & Contact
+
+- Author: Muhammad Sohaib (BSc Computer Science Student)
+- GitHub: https://github.com/sohaib007w
+- Email: mailto:sohaib007ftw@gmail.com
+- Sitemap: https://sohaib007w.github.io/studyflick-blog/sitemap.xml
