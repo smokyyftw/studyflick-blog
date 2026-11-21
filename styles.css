@@ -444,6 +444,7 @@ button {
 #about,
 #editorial-policy,
 #privacy-policy,
+#terms-of-service,
 #contact,
 #sources {
   scroll-margin-top: 100px;
@@ -1250,6 +1251,10 @@ table.comparison-table tbody tr.is-hidden {
   box-shadow: var(--shadow-card);
 }
 
+.trust-card.is-wide {
+  grid-column: 1 / -1;
+}
+
 .trust-card-title {
   margin: 0 0 8px;
   font-family: var(--font-serif);
@@ -1269,6 +1274,46 @@ table.comparison-table tbody tr.is-hidden {
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Article Social Share Bar */
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.share-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  margin-right: 4px;
+}
+
+.share-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-hairline);
+  background-color: var(--bg-surface);
+  color: var(--text-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+
+.share-pill:hover {
+  background-color: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
+
+.share-pill.is-copied {
+  background-color: var(--accent-yellow);
+  border-color: var(--text-ink);
 }
 
 /* Related Articles Strip */

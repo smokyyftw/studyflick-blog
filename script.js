@@ -104,7 +104,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Copy Prompt Code Blocks
+  // 4. Copy Prompt Code Blocks & Article Share Links
+  const copyTextToClipboard = async (textToCopy) => {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        return true;
+      } catch {
+        // Fallback below for restricted iframe contexts
+      }
+    }
+
+    try {
+      const textarea = document.createElement('textarea');
+      textarea.value = textToCopy;
+      textarea.setAttribute('readonly', '');
+      textarea.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+      document.body.appendChild(textarea);
+      textarea.select();
+      const copied = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return copied;
+    } catch {
+      return false;
+    }
+  };
+
   const copyButtons = document.querySelectorAll('[data-copy-prompt]');
   copyButtons.forEach((btn) => {
     const originalLabel = (btn.textContent || 'Copy Prompt').trim();
@@ -116,31 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!codeEl) return;
 
       const textToCopy = codeEl.textContent ? codeEl.textContent.trim() : '';
-      let copied = false;
-
-      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-        try {
-          await navigator.clipboard.writeText(textToCopy);
-          copied = true;
-        } catch {
-          copied = false;
-        }
-      }
-
-      if (!copied) {
-        try {
-          const textarea = document.createElement('textarea');
-          textarea.value = textToCopy;
-          textarea.setAttribute('readonly', '');
-          textarea.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
-          document.body.appendChild(textarea);
-          textarea.select();
-          copied = document.execCommand('copy');
-          document.body.removeChild(textarea);
-        } catch {
-          copied = false;
-        }
-      }
+      const copied = await copyTextToClipboard(textToCopy);
 
       if (resetTimer) {
         clearTimeout(resetTimer);
@@ -151,6 +152,31 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('is-copied');
       } else {
         btn.textContent = 'Select text';
+      }
+
+      resetTimer = setTimeout(() => {
+        btn.textContent = originalLabel;
+        btn.classList.remove('is-copied');
+      }, 1800);
+    });
+  });
+
+  const shareCopyButtons = document.querySelectorAll('[data-copy-url]');
+  shareCopyButtons.forEach((btn) => {
+    const originalLabel = (btn.textContent || 'Copy Link').trim();
+    let resetTimer = null;
+
+    btn.addEventListener('click', async () => {
+      const targetUrl = btn.getAttribute('data-copy-url') || window.location.href;
+      const copied = await copyTextToClipboard(targetUrl);
+
+      if (resetTimer) {
+        clearTimeout(resetTimer);
+      }
+
+      btn.textContent = copied ? 'Link Copied \u2713' : 'Copy Failed';
+      if (copied) {
+        btn.classList.add('is-copied');
       }
 
       resetTimer = setTimeout(() => {
