@@ -79,6 +79,19 @@ button {
   outline-offset: 3px;
 }
 
+/* Visually Hidden Accessible Text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Accessible Skip Link */
 .skip-link {
   position: fixed;
@@ -874,6 +887,13 @@ table.comparison-table tbody tr.is-hidden {
   border-top: 1px solid var(--border-hairline);
   font-size: 0.85rem;
   color: var(--text-subtle);
+}
+
+.article-expertise-note {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
 }
 
 .article-prose {
