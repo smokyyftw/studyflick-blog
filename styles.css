@@ -429,6 +429,7 @@ button {
 .media-frame.is-card {
   aspect-ratio: 16 / 10;
   border-radius: 16px;
+  transition: border-color 200ms var(--ease-out);
 }
 
 .media-frame.is-article-hero {
@@ -454,11 +455,35 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 350ms var(--ease-out);
+  transition: transform 350ms var(--ease-out), opacity 220ms var(--ease-out);
 }
 
-.post-card:hover .media-frame img {
+.post-card-media-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.post-card-media-link:focus-visible {
+  outline: 2px solid var(--text-ink);
+  outline-offset: -3px;
+}
+
+.post-card:hover .media-frame img,
+.post-card-media-link:hover img,
+.post-card-media-link:focus-visible img {
   transform: scale(1.03);
+}
+
+.post-card-media-link:hover img,
+.post-card-media-link:focus-visible img {
+  opacity: 0.92;
+}
+
+.post-card:has(.post-card-media-link:hover) .media-frame.is-card,
+.post-card:has(.post-card-media-link:focus-visible) .media-frame.is-card {
+  border-color: var(--text-ink);
 }
 
 .media-fallback {
@@ -759,6 +784,21 @@ table.comparison-table tbody tr.is-hidden {
   font-weight: 500;
   line-height: 1.24;
   text-wrap: balance;
+}
+
+.post-card-title-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: color 180ms var(--ease-out), text-decoration-color 180ms var(--ease-out);
+}
+
+.post-card-title-link:hover,
+.post-card-title-link:focus-visible {
+  color: #5A3E2B;
+  text-decoration-color: currentColor;
 }
 
 .post-card-excerpt {
