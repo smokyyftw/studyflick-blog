@@ -1288,7 +1288,7 @@ table.comparison-table tbody tr.is-hidden {
 .site-footer {
   background-color: var(--footer-bg);
   color: var(--footer-text);
-  padding: 64px 0 36px;
+  padding: 64px 0 48px;
   margin-top: 24px;
 }
 
@@ -1296,8 +1296,7 @@ table.comparison-table tbody tr.is-hidden {
   display: grid;
   grid-template-columns: 1.35fr 0.78fr 0.78fr 0.85fr 1.25fr;
   gap: 28px;
-  padding-bottom: 44px;
-  border-bottom: 1px solid var(--footer-border);
+  padding-bottom: 28px;
 }
 
 .footer-brand {
@@ -1424,8 +1423,24 @@ table.comparison-table tbody tr.is-hidden {
   color: var(--accent-peach);
 }
 
+.footer-art {
+  width: 100%;
+  margin: 12px 0 0;
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.footer-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .footer-bottom {
   padding-top: 24px;
+  border-top: 1px solid var(--footer-border);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1466,6 +1481,16 @@ table.comparison-table tbody tr.is-hidden {
   .related-grid,
   .trust-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-art {
+    display: none;
+  }
+
+  .footer-grid {
+    padding-bottom: 36px;
   }
 }
 
