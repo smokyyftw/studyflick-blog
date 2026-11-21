@@ -1510,6 +1510,7 @@ table.comparison-table tbody tr.is-hidden {
 
 .footer-art {
   width: 100%;
+  max-width: 100%;
   margin: 12px 0 0;
   opacity: 0.4;
   pointer-events: none;
@@ -1520,6 +1521,7 @@ table.comparison-table tbody tr.is-hidden {
 .footer-art svg {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -1570,12 +1572,26 @@ table.comparison-table tbody tr.is-hidden {
 }
 
 @media (max-width: 768px) {
-  .footer-art {
-    display: none;
+  .footer-grid {
+    padding-bottom: 24px;
   }
 
-  .footer-grid {
-    padding-bottom: 36px;
+  .footer-art {
+    margin: 4px 0 10px;
+    opacity: 0.55;
+  }
+
+  .footer-art svg {
+    min-height: 44px;
+  }
+
+  .footer-art svg path,
+  .footer-art svg rect,
+  .footer-art svg line,
+  .footer-art svg ellipse,
+  .footer-art svg circle:not([stroke="none"]) {
+    vector-effect: non-scaling-stroke;
+    stroke-width: 1.15px;
   }
 }
 
